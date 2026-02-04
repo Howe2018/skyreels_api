@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skyreels-sdk"
+version = "0.1.1"
+description = "Python SDK for Skyreels API"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Skyreels Team" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "httpx>=0.24.0",
+    "pydantic>=2.0.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["skyreels*"]
+
+[project.urls]
+"Homepage" = "https://github.com/skyreels/skyreels-python-sdk"
