@@ -13,6 +13,7 @@ async def main():
     parser.add_argument("--prompt", type=str, default="Make clouds move", help="Video prompt")
     parser.add_argument("--image-url", type=str, default="https://picsum.photos/1280/720", help="First frame image URL")
     parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")
+    parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
     
     args = parser.parse_args()
     
@@ -21,11 +22,12 @@ async def main():
         return
 
     async with SkyreelsClient(api_key=args.api_key, base_url=args.base_url) as client:
-        print(f"Submitting image2video task (async) with prompt: {args.prompt} and image: {args.image_url}")
+        print(f"Submitting image2video task (async) with prompt: {args.prompt} (mode: {args.mode}) and image: {args.image_url}")
         resp = await client.asubmit_image2video(
             prompt=args.prompt, 
             image_url=args.image_url,
-            duration=args.duration
+            duration=args.duration,
+            mode=args.mode
         )
         print(f"Submitted! Task ID: {resp.task_id}")
         

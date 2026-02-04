@@ -13,7 +13,7 @@ class SkyreelsClient:
         base_url: Optional[str] = None,
         timeout: float = 60.0,
         polling_interval: float = 5.0,
-        max_wait_time: float = 600.0  # Default 10 minutes
+        max_wait_time: float = 600.0,  # Default 10 minutes
     ):
         self.api_key = api_key or os.getenv("SKYREELS_API_KEY")
         if not self.api_key:

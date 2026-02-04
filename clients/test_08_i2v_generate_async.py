@@ -14,6 +14,7 @@ async def main():
     parser.add_argument("--image-url", type=str, default="https://picsum.photos/1280/720", help="First frame image URL")
     parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")
     parser.add_argument("--interval", type=float, default=5.0, help="Polling interval in seconds")
+    parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
     
     args = parser.parse_args()
     
@@ -22,11 +23,12 @@ async def main():
         return
 
     async with SkyreelsClient(api_key=args.api_key, base_url=args.base_url, polling_interval=args.interval) as client:
-        print(f"Generating image2video (async polling) with prompt: {args.prompt} and image: {args.image_url}... This may take a few minutes.")
+        print(f"Generating image2video (async polling) with prompt: {args.prompt} (mode: {args.mode}) and image: {args.image_url}... This may take a few minutes.")
         task = await client.agenerate_image2video(
             prompt=args.prompt, 
             image_url=args.image_url,
-            duration=args.duration
+            duration=args.duration,
+            mode=args.mode
         )
         print(f"Final Status: {task.status}")
         

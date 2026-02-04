@@ -14,12 +14,17 @@ pip install skyreels-sdk
 
 You can provide the API key via the constructor or the `SKYREELS_API_KEY` environment variable.
 The base URL can be provided via the constructor or the `BASE_URL` environment variable, defaulting to `https://apis.skyreels.ai`.
+Default mode can be set via the constructor (defaults to `std`). `pro` mode supports generating 1080P results.
 
 ```python
 from skyreels import SkyreelsClient
 
 # Method 1: Pass via constructor
-client = SkyreelsClient(api_key="your_api_key", base_url="https://apis.skyreels.ai")
+client = SkyreelsClient(
+    api_key="your_api_key", 
+    base_url="https://apis.skyreels.ai",
+    mode="std"  # Use pro mode for 1080P results
+)
 
 # Method 2: Environment variables
 # export SKYREELS_API_KEY=your_api_key
