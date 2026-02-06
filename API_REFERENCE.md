@@ -60,8 +60,11 @@ import time
 from skyreels import SkyreelsClient, TaskStatus
 
 client = SkyreelsClient()
-# 1. Submit
-resp = client.submit_text2video(prompt="A beautiful sunset")
+# 1. Submit with sound enabled
+resp = client.submit_text2video(
+    prompt="A beautiful sunset", 
+    sound=True
+)
 task_id = resp.task_id
 
 # 2. Custom Polling Loop

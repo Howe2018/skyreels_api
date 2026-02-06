@@ -15,6 +15,7 @@ async def main():
     parser.add_argument("--aspect-ratio", type=str, choices=["16:9", "4:3", "1:1", "9:16", "3:4"], default="16:9", help="Aspect ratio")
     parser.add_argument("--interval", type=float, default=5.0, help="Polling interval in seconds")
     parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
+    parser.add_argument("--sound", action="store_true", help="Enable sound generation")
     
     args = parser.parse_args()
     
@@ -23,12 +24,13 @@ async def main():
         return
 
     async with SkyreelsClient(api_key=args.api_key, base_url=args.base_url, polling_interval=args.interval) as client:
-        print(f"Generating text2video (async polling) with prompt: {args.prompt} (mode: {args.mode})... This may take a few minutes.")
+        print(f"Generating text2video (async polling) with prompt: {args.prompt} (mode: {args.mode}, sound: {args.sound})... This may take a few minutes.")
         task = await client.agenerate_text2video(
             prompt=args.prompt, 
             duration=args.duration,
             aspect_ratio=args.aspect_ratio,
-            mode=args.mode
+            mode=args.mode,
+            sound=args.sound
         )
         print(f"Final Status: {task.status}")
         

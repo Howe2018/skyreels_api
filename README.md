@@ -23,9 +23,10 @@ pip install .
 ## Quick Start
 
 ### 1. Initialization
-Set your API key via environment variable:
+Set your API key and optionally the base URL via environment variables:
 ```bash
 export SKYREELS_API_KEY="your_api_key"
+export BASE_URL="https://apis.skyreels.ai" # Optional
 ```
 
 ### 2. Simple Video Generation (Automatic Polling)

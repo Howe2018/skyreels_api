@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")
     parser.add_argument("--interval", type=float, default=5.0, help="Polling interval in seconds")
     parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
+    parser.add_argument("--sound", action="store_true", help="Enable sound generation")
     
     args = parser.parse_args()
     
@@ -23,12 +24,13 @@ def main():
 
     client = SkyreelsClient(api_key=args.api_key, base_url=args.base_url, polling_interval=args.interval)
     try:
-        print(f"Generating image2video (sync polling) with prompt: {args.prompt} (mode: {args.mode}) and image: {args.image_url}... This may take a few minutes.")
+        print(f"Generating image2video (sync polling) with prompt: {args.prompt} (mode: {args.mode}, sound: {args.sound}) and image: {args.image_url}... This may take a few minutes.")
         task = client.generate_image2video(
             prompt=args.prompt, 
             image_url=args.image_url,
             duration=args.duration,
-            mode=args.mode
+            mode=args.mode,
+            sound=args.sound
         )
         print(f"Final Status: {task.status}")
         

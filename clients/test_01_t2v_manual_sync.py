@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")
     parser.add_argument("--aspect-ratio", type=str, choices=["16:9", "4:3", "1:1", "9:16", "3:4"], default="16:9", help="Aspect ratio")
     parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
+    parser.add_argument("--sound", action="store_true", help="Enable sound generation")
     
     args = parser.parse_args()
     
@@ -23,12 +24,13 @@ def main():
 
     client = SkyreelsClient(api_key=args.api_key, base_url=args.base_url)
     try:
-        print(f"Submitting text2video task (sync) with prompt: {args.prompt} (mode: {args.mode})")
+        print(f"Submitting text2video task (sync) with prompt: {args.prompt} (mode: {args.mode}, sound: {args.sound})")
         resp = client.submit_text2video(
             prompt=args.prompt, 
             duration=args.duration,
             aspect_ratio=args.aspect_ratio,
-            mode=args.mode
+            mode=args.mode,
+            sound=args.sound
         )
         print(f"Submitted! Task ID: {resp.task_id}")
         
