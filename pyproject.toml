@@ -25,4 +25,4 @@ dependencies = [
 include = ["skyreels*"]
 
 [project.urls]
-"Homepage" = "https://github.com/skyreels/skyreels-python-sdk"
+"Homepage" = "https://github.com/skyreels/skyreels_api"

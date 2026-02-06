@@ -1,118 +1,87 @@
 # Skyreels Python SDK
 
-Python SDK for [Skyreels API](https://apis.skyreels.ai).
+Python SDK for [Skyreels API](https://apis.skyreels.ai). This library provides a simple and efficient way to integrate advanced AI video generation into your Python projects.
+
+## Key Features
+- **Text-to-Video (T2V)**: Create cinematic videos from text prompts.
+- **Image-to-Video (I2V)**: Animate images with AI-driven motion.
+- **Sync & Async Support**: Full support for both synchronous and asynchronous (`asyncio`) programming models.
+- **Automatic Polling**: One-line methods to submit and wait for final video results.
+- **1080P Support**: High-definition video generation via `pro` mode.
+
+---
 
 ## Installation
 
+### From Source
 ```bash
-pip install skyreels-sdk
+git clone https://github.com/skyreels/skyreels_api.git
+cd skyreels_api
+pip install .
 ```
 
-## Usage
+## Quick Start
 
-### Initialization
+### 1. Initialization
+Set your API key via environment variable:
+```bash
+export SKYREELS_API_KEY="your_api_key"
+```
 
-You can provide the API key via the constructor or the `SKYREELS_API_KEY` environment variable.
-The base URL can be provided via the constructor or the `BASE_URL` environment variable, defaulting to `https://apis.skyreels.ai`.
-Default mode can be set via the constructor (defaults to `std`). `pro` mode supports generating 1080P results.
+### 2. Simple Video Generation (Automatic Polling)
+The `generate_*` methods are the easiest way to get started. They handle submission and wait for the result automatically.
 
 ```python
 from skyreels import SkyreelsClient
 
-# Method 1: Pass via constructor
-client = SkyreelsClient(
-    api_key="your_api_key", 
-    base_url="https://apis.skyreels.ai",
-    mode="std"  # Use pro mode for 1080P results
+client = SkyreelsClient()
+
+# Generate from Text
+task = client.generate_text2video(
+    prompt="A futuristic cyberpunk city with neon lights",
+    mode="pro"
 )
 
-# Method 2: Environment variables
-# export SKYREELS_API_KEY=your_api_key
-# export BASE_URL=https://apis.skyreels.ai
-client = SkyreelsClient()
-```
-
-### 1. Manual Task Management (Submit & Query)
-
-This mode gives you full control over the task lifecycle. You submit a task, get a `task_id`, and query the status later.
-
-#### Synchronous
-
-```python
-# Text to Video
-response = client.submit_text2video(prompt="A beautiful sunset", duration=5)
-task = client.get_text2video_task(response.task_id)
-
-# Image to Video
-response = client.submit_image2video(prompt="Move water", image_url="https://...")
-task = client.get_image2video_task(response.task_id)
-
 if task.status == "success":
-    print(f"Video URL: {task.data.video_url}")
+    print(f"Video ready: {task.data.video_url}")
 ```
 
-#### Asynchronous
-
+### 3. Asynchronous Usage
 ```python
+import asyncio
+from skyreels import SkyreelsClient
+
 async def main():
     async with SkyreelsClient() as client:
-        # Text to Video
-        resp = await client.asubmit_text2video(prompt="A beautiful sunset")
-        task = await client.aget_text2video_task(resp.task_id)
-        
-        # Image to Video
-        resp = await client.asubmit_image2video(prompt="Move water", image_url="https://...")
-        task = await client.aget_image2video_task(resp.task_id)
-```
-
-### 2. Automatic Polling (One-Step Generation)
-
-This mode is simpler for scripts. The SDK handles polling internally and returns only when the task is finished (success or failed).
-
-#### Synchronous
-
-```python
-# Text to Video
-task = client.generate_text2video(prompt="A beautiful sunset")
-
-# Image to Video
-task = client.generate_image2video(prompt="Move water", image_url="https://...")
-
-if task.status == "success":
-    print(f"Video URL: {task.data.video_url}")
-```
-
-#### Asynchronous
-
-```python
-async def main():
-    async with SkyreelsClient() as client:
-        # Text to Video
         task = await client.agenerate_text2video(prompt="A beautiful sunset")
-        
-        # Image to Video
-        task = await client.agenerate_image2video(prompt="Move water", image_url="https://...")
+        print(task.data.video_url)
+
+asyncio.run(main())
 ```
+
+---
+
+## Documentation
+
+For a full list of all parameters, **manual task management (submit/query)**, and detailed model schemas, please see our:
+
+👉 **[Comprehensive API Reference & Guide](API_REFERENCE.md)**
 
 ## Error Handling
 
-The SDK raises specific exceptions based on the API error codes:
-
-- `InvalidAPIKeyError` (401)
-- `ParameterError` (422)
-- `ServiceBusyError` (429)
-- `InsufficientCreditsError` (480)
-- `QuotaExceededError` (481)
-- `InternalError` (500)
-- `SecurityPolicyError` (503)
+The SDK raises specific exceptions for common API errors:
 
 ```python
 from skyreels import SkyreelsClient, InsufficientCreditsError
 
+client = SkyreelsClient()
 try:
     client.generate_text2video(prompt="...")
 except InsufficientCreditsError:
-    print("Please recharge your credits.")
+    print("Please top up your account.")
 except Exception as e:
-    print(f"An error occurred: {e}")
+    print(f"Error: {e}")
 ```
+
+## License
+MIT
