@@ -1,6 +1,6 @@
 # Skyreels Python SDK
 
-Python SDK for [Skyreels API](https://apis.skyreels.ai). This library provides a simple and efficient way to integrate advanced AI video generation into your Python projects.
+Python SDK for [Skyreels API](https://infer.skyreels.ai). This library provides a simple and efficient way to integrate advanced AI video generation into your Python projects.
 
 ## Key Features
 - **Text-to-Video (T2V)**: Create cinematic videos from text prompts.
@@ -26,7 +26,7 @@ pip install .
 Set your API key and optionally the base URL via environment variables:
 ```bash
 export SKYREELS_API_KEY="your_api_key"
-export BASE_URL="https://apis.skyreels.ai" # Optional
+export BASE_URL="https://infer.skyreels.ai" # Optional
 ```
 
 ### 2. Simple Video Generation (Automatic Polling)

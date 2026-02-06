@@ -8,7 +8,7 @@ from skyreels import SkyreelsClient, TaskStatus
 def main():
     parser = argparse.ArgumentParser(description="Image2Video Sync Generate (Polling) Test")
     parser.add_argument("--api-key", type=str, default=os.getenv("SKYREELS_API_KEY"), help="API Key")
-    parser.add_argument("--base-url", type=str, default=os.getenv("BASE_URL", "https://apis.skyreels.ai"), help="Base URL")
+    parser.add_argument("--base-url", type=str, default=os.getenv("BASE_URL", "https://infer.skyreels.ai"), help="Base URL")
     parser.add_argument("--prompt", type=str, default="Sunset motion", help="Video prompt")
     parser.add_argument("--image-url", type=str, default="https://picsum.photos/1280/720", help="First frame image URL")
     parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")

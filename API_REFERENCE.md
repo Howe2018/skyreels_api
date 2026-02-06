@@ -19,7 +19,7 @@ The `SkyreelsClient` supports both synchronous and asynchronous operations. You 
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `api_key` | `str` | `os.getenv("SKYREELS_API_KEY")` | Your Skyreels API Key. |
-| `base_url` | `str` | `"https://apis.skyreels.ai"` | The API endpoint. Can be set via `BASE_URL` env var. |
+| `base_url` | `str` | `"https://infer.skyreels.ai"` | The API endpoint. Can be set via `BASE_URL` env var. |
 | `timeout` | `float` | `60.0` | HTTP request timeout. |
 | `polling_interval` | `float` | `5.0` | Default interval for internal polling methods. |
 | `max_wait_time` | `float` | `600.0` | Default timeout (10 mins) for internal polling methods. |

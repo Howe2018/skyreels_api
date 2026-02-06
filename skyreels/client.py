@@ -19,7 +19,7 @@ class SkyreelsClient:
         if not self.api_key:
             raise ValueError("API key must be provided either via constructor or SKYREELS_API_KEY environment variable")
         
-        self.base_url = (base_url or os.getenv("BASE_URL") or "https://apis.skyreels.ai").rstrip("/")
+        self.base_url = (base_url or os.getenv("BASE_URL") or "https://infer.skyreels.ai").rstrip("/")
         self.timeout = timeout
         self.polling_interval = polling_interval
         self.max_wait_time = max_wait_time
