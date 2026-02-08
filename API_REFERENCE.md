@@ -98,7 +98,7 @@ if task.status == TaskStatus.SUCCESS:
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `prompt` | `str` | **Required** | Text description for video generation. |
-| `image_url` | `str` | **Required** | URL of the source image to animate. |
+| `image_url` | `str` | **Required** | URL of the source image|
 | `duration` | `int` | `5` | Duration of the generated video in seconds. |
 | `sound` | `bool` | `False` | **Important:** Determines whether the output video has audio. |
 | `mode` | `str` | `"std"` | **Important:** Generation mode. `"std"` results in 720P, while `"pro"` provides 1080P high-definition. |
