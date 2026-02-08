@@ -29,7 +29,17 @@ The `SkyreelsClient` supports both synchronous and asynchronous operations. You 
 
 ## 2. Text to Video (T2V)
 
-### 2.1 One-Step Generation (Automatic Polling)
+### 2.1 Key Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `prompt` | `str` | **Required** | Text description for video generation. |
+| `duration` | `int` | `5` | Duration of the generated video in seconds. |
+| `aspect_ratio` | `str` | `"16:9"` | Aspect ratio of the video. Options: `"16:9"`, `"4:3"`, `"1:1"`, `"9:16"`, `"3:4"`. |
+| `sound` | `bool` | `False` | **Important:** Determines whether the output video has audio. |
+| `mode` | `str` | `"std"` | **Important:** Generation mode. `"std"` results in 720P, while `"pro"` provides 1080P high-definition. |
+
+### 2.2 One-Step Generation (Automatic Polling)
 The `generate_text2video` method handles task submission and internal polling. It blocks (or awaits) until the video is ready or fails.
 
 **Example:**
@@ -39,7 +49,7 @@ if task.status == "success":
     print(task.data.video_url)
 ```
 
-### 2.2 Manual Task Management (Non-One-Step)
+### 2.3 Manual Task Management
 For more complex workflows, such as batch processing or custom polling logic, use the manual submission and query methods.
 
 #### Submit a Task
@@ -83,7 +93,20 @@ if task.status == TaskStatus.SUCCESS:
 
 ## 3. Image to Video (I2V)
 
-### 3.1 One-Step Generation
+### 3.1 Key Parameters
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `prompt` | `str` | **Required** | Text description for video generation. |
+| `image_url` | `str` | **Required** | URL of the source image to animate. |
+| `duration` | `int` | `5` | Duration of the generated video in seconds. |
+| `sound` | `bool` | `False` | **Important:** Determines whether the output video has audio. |
+| `mode` | `str` | `"std"` | **Important:** Generation mode. `"std"` results in 720P, while `"pro"` provides 1080P high-definition. |
+
+### 3.2 One-Step Generation (Automatic Polling)
+The `generate_image2video` method handles task submission and internal polling.
+
+**Example:**
 ```python
 task = client.generate_image2video(
     prompt="Make ripples", 
@@ -91,7 +114,7 @@ task = client.generate_image2video(
 )
 ```
 
-### 3.2 Manual Task Management (Non-One-Step)
+### 3.3 Manual Task Management (Non-One-Step)
 
 #### Submit a Task
 - `submit_image2video(...)` (Sync)
