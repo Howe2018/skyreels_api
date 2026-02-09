@@ -70,7 +70,17 @@ For a full list of all parameters, **manual task management (submit/query)**, an
 
 ## Error Handling
 
-The SDK raises specific exceptions for common API errors:
+The SDK raises specific exceptions based on API error codes. All custom exceptions inherit from `SkyreelsError`.
+
+| Code | Exception | Description |
+| :--- | :--- | :--- |
+| 401 | `InvalidAPIKeyError` | Invalid or missing API key. |
+| 422 | `ParameterError` | Invalid parameters (e.g., duration out of range). |
+| 429 | `ServiceBusyError` | Server is busy, retry later. |
+| 480 | `InsufficientCreditsError` | Insufficient account credits. |
+| 481 | `QuotaExceededError` | QPS/Concurrency limit reached. |
+| 500 | `InternalError` | Internal server error. |
+| 503 | `SecurityPolicyError` | Content blocked by safety policy. |
 
 ```python
 from skyreels import SkyreelsClient, InsufficientCreditsError

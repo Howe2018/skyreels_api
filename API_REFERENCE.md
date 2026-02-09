@@ -176,4 +176,34 @@ Returned by all `submit_*` methods.
 ---
 
 ## 5. Error Handling & Exceptions
-(See README or existing documentation for full exception list mapping to 401, 422, 429, etc.)
+
+The Skyreels SDK maps API error codes to specific Python exceptions. All custom exceptions inherit from `SkyreelsError`.
+
+### Exception Reference Table
+
+| HTTP/API Code | Exception Class | Description | Recommended Action |
+| :--- | :--- | :--- | :--- |
+| 401 | `InvalidAPIKeyError` | The provided API key is incorrect or expired. | Check and update your API key. |
+| 422 | `ParameterError` | One or more input parameters are invalid. | Review the API docs and check parameter constraints (e.g., duration 1-8). |
+| 429 | `ServiceBusyError` | The server is currently under high load. | Retry the request after a short delay. |
+| 480 | `InsufficientCreditsError` | Your account balance is too low for this task. | Recharge your account credits. |
+| 481 | `QuotaExceededError` | Your Concurrency or QPS limit has been reached. | Reduce request frequency or contact support to increase quota. |
+| 500 | `InternalError` | An unexpected error occurred on the server side. | Retry later or contact technical support. |
+| 503 | `SecurityPolicyError` | The input prompt or image triggered safety filters. | Modify the input content and try again. |
+
+### Example Usage
+
+```python
+from skyreels import SkyreelsClient, SkyreelsError, InsufficientCreditsError
+
+client = SkyreelsClient()
+
+try:
+    task = client.generate_text2video(prompt="...")
+except InsufficientCreditsError:
+    print("Insufficient credits, please recharge.")
+except SkyreelsError as e:
+    print(f"API Error: {e.message} (Code: {e.code}, Trace ID: {e.trace_id})")
+except Exception as e:
+    print(f"Unexpected error: {e}")
+```
