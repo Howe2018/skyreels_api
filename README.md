@@ -13,6 +13,7 @@ This library provides a simple and efficient way to integrate advanced AI video 
 ## Installation
 
 ### From Source
+Install the SDK directly from the repository:
 ```bash
 git clone https://github.com/Howe2018/skyreels_api.git
 cd skyreels_api
@@ -22,88 +23,104 @@ pip install .
 ## Quick Start
 
 ### 1. Initialization
-Set your API key and optionally the base URL via environment variables:
+The easiest way to get started is by setting your API key as an environment variable:
 ```bash
-export SKYREELS_API_KEY="your_api_key"
+export SKYREELS_API_KEY="your_api_key_here"
+```
+
+You can also initialize the client directly in your code. The client supports context manager usage for automatic resource cleanup:
+```python
+from skyreels import SkyreelsClient
+
+# Using as a context manager (recommended for automatic connection closing)
+with SkyreelsClient(api_key="your_api_key") as client:
+    # Your code here
+    pass
 ```
 
 ### 2. Simple Video Generation (Automatic Polling)
+The `generate_*` methods are high-level helpers that submit a task and automatically poll for the result until completion or until `max_wait_time` is reached.
 
-#### 2.1 text2video without audio
-
-```python
-from skyreels import SkyreelsClient
-
-client = SkyreelsClient()
-task = client.generate_text2video(
-    prompt="***",
-    duration=5,
-    mode="pro",
-    sound=False,
-    max_wait_time=600,
-)
-if task.status == "success":
-    print(f"Video ready: {task.data.video_url}")
-else:
-    print(task)
-```
-
-#### 2.2 text2video with audio
+#### 2.1 Text-to-Video (T2V) without Audio
 
 ```python
 from skyreels import SkyreelsClient
 
 client = SkyreelsClient()
 task = client.generate_text2video(
-    prompt="***",
-    duration=5,
-    mode="pro",
-    sound=True,
-    max_wait_time=600,
+    prompt="****",
+    duration=5,           # Video duration in seconds
+    aspect_ratio="16:9",  # Options: 16:9, 4:3, 1:1, 9:16, 3:4
+    mode="pro",           # Use "pro" for 1080P or "std" for standard
+    sound=False,
+    max_wait_time=600,    # Max seconds to wait for completion
 )
+
 if task.status == "success":
     print(f"Video ready: {task.data.video_url}")
 else:
-    print(task)
+    print(f"Task failed: {task}")
 ```
 
-#### 2.3 image2video without audio
+#### 2.2 Text-to-Video (T2V) with Audio
+
+```python
+from skyreels import SkyreelsClient
+
+client = SkyreelsClient()
+task = client.generate_text2video(
+    prompt="****",
+    duration=5,
+    aspect_ratio="16:9",  # Options: 16:9, 4:3, 1:1, 9:16, 3:4
+    mode="pro",
+    sound=True,           # Enable AI-generated synchronized audio
+    max_wait_time=600,
+)
+
+if task.status == "success":
+    print(f"Video ready: {task.data.video_url}")
+else:
+    print(f"Task failed: {task}")
+```
+
+#### 2.3 Image-to-Video (I2V) without Audio
 ```python
 from skyreels import SkyreelsClient
 
 client = SkyreelsClient()
 task = client.generate_image2video(
-    prompt="***",
-    image_url="", # Must be a public image URL
+    prompt="****",
+    image_url="***", # Must be a public image URL
     duration=5,
     mode="pro",
     sound=False,
     max_wait_time=600,
 )
+
 if task.status == "success":
     print(f"Video ready: {task.data.video_url}")
 else:
-    print(task)
+    print(f"Task failed: {task}")
 ```
 
-#### 2.4 image2video with audio
+#### 2.4 Image-to-Video (I2V) with Audio
 ```python
 from skyreels import SkyreelsClient
 
 client = SkyreelsClient()
 task = client.generate_image2video(
     prompt="***",
-    image_url="", # Must be a public image URL
+    image_url="***", # Must be a public image URL
     duration=5,
     mode="pro",
-    sound=True,
+    sound=True,        # Enable AI-generated synchronized audio
     max_wait_time=600,
 )
+
 if task.status == "success":
     print(f"Video ready: {task.data.video_url}")
 else:
-    print(task)
-```
+    print(f"Task failed: {task}")
 
 ---
 
