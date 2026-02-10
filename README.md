@@ -121,6 +121,7 @@ if task.status == "success":
     print(f"Video ready: {task.data.video_url}")
 else:
     print(f"Task failed: {task}")
+```
 
 ---
 
