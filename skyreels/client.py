@@ -12,7 +12,7 @@ class SkyreelsClient:
         api_key: Optional[str] = None, 
         base_url: Optional[str] = None,
         timeout: float = 60.0,
-        polling_interval: float = 5.0,
+        polling_interval: float = 10.0,
         max_wait_time: float = 600.0,  # Default 10 minutes
     ):
         self.api_key = api_key or os.getenv("SKYREELS_API_KEY")
@@ -78,6 +78,7 @@ class SkyreelsClient:
         interval = polling_interval or self.polling_interval
         wait_time = max_wait_time or self.max_wait_time
         max_retries = int(wait_time / interval)
+        print(f"task id: {submit_resp.task_id}, max retries: {max_retries}, max wait time: {wait_time}")
 
         for _ in range(max_retries):
             task_resp = self.get_text2video_task(submit_resp.task_id)
@@ -128,6 +129,7 @@ class SkyreelsClient:
         interval = polling_interval or self.polling_interval
         wait_time = max_wait_time or self.max_wait_time
         max_retries = int(wait_time / interval)
+        print(f"task id: {submit_resp.task_id}, max retries: {max_retries}, max wait time: {wait_time}")
 
         for _ in range(max_retries):
             task_resp = self.get_image2video_task(submit_resp.task_id)

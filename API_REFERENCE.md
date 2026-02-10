@@ -21,7 +21,7 @@ The `SkyreelsClient` supports both synchronous and asynchronous operations. You 
 | `api_key` | `str` | `os.getenv("SKYREELS_API_KEY")` | Your Skyreels API Key. |
 | `base_url` | `str` | `"https://infer.skyreels.ai"` | The API endpoint. Can be set via `BASE_URL` env var. |
 | `timeout` | `float` | `60.0` | HTTP request timeout. |
-| `polling_interval` | `float` | `5.0` | Default interval for internal polling methods. |
+| `polling_interval` | `float` | `10.0` | Default interval for internal polling methods. |
 | `max_wait_time` | `float` | `600.0` | Default timeout (10 mins) for internal polling methods. |
 | `mode` | `str` | `"std"` | Default generation mode (`"std"` or `"pro"`), the "std" mode generates 720P output, whereas the "pro" mode provides higher-quality results with 1080P resolution and increased fps.|
 
