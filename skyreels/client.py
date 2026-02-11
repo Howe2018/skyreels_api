@@ -43,7 +43,7 @@ class SkyreelsClient:
         duration: int = 5,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std"
+        mode: Literal["std", "pro"] = "pro"
     ) -> SubmitResponse:
         payload = Text2VideoSubmit(
             prompt=prompt,
@@ -66,7 +66,7 @@ class SkyreelsClient:
         duration: int = 5,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std",
+        mode: Literal["std", "pro"] = "pro",
         polling_interval: Optional[float] = None,
         max_wait_time: Optional[float] = None
     ) -> TaskResponse:
@@ -94,7 +94,7 @@ class SkyreelsClient:
         image_url: str,
         duration: int = 5,
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std"
+        mode: Literal["std", "pro"] = "pro"
     ) -> SubmitResponse:
         payload = Image2VideoSubmit(
             prompt=prompt,
@@ -117,7 +117,7 @@ class SkyreelsClient:
         image_url: str,
         duration: int = 5,
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std",
+        mode: Literal["std", "pro"] = "pro",
         polling_interval: Optional[float] = None,
         max_wait_time: Optional[float] = None
     ) -> TaskResponse:
@@ -145,7 +145,7 @@ class SkyreelsClient:
         duration: int = 5,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std"
+        mode: Literal["std", "pro"] = "pro"
     ) -> SubmitResponse:
         payload = Text2VideoSubmit(
             prompt=prompt,
@@ -168,7 +168,7 @@ class SkyreelsClient:
         duration: int = 5,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std",
+        mode: Literal["std", "pro"] = "pro",
         polling_interval: Optional[float] = None,
         max_wait_time: Optional[float] = None
     ) -> TaskResponse:
@@ -195,7 +195,7 @@ class SkyreelsClient:
         image_url: str,
         duration: int = 5,
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std"
+        mode: Literal["std", "pro"] = "pro"
     ) -> SubmitResponse:
         payload = Image2VideoSubmit(
             prompt=prompt,
@@ -218,7 +218,7 @@ class SkyreelsClient:
         image_url: str,
         duration: int = 5,
         sound: bool = False,
-        mode: Literal["std", "pro"] = "std",
+        mode: Literal["std", "pro"] = "pro",
         polling_interval: Optional[float] = None,
         max_wait_time: Optional[float] = None
     ) -> TaskResponse:

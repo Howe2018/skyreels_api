@@ -23,7 +23,7 @@ The `SkyreelsClient` supports both synchronous and asynchronous operations. You 
 | `timeout` | `float` | `60.0` | HTTP request timeout. |
 | `polling_interval` | `float` | `10.0` | Default interval for internal polling methods. |
 | `max_wait_time` | `float` | `900.0` | Default timeout (15 mins) for internal polling methods. |
-| `mode` | `str` | `"std"` | Default generation mode (`"std"` or `"pro"`), the "std" mode generates 720P output, whereas the "pro" mode provides higher-quality results with 1080P resolution and increased fps.|
+| `mode` | `str` | `"pro"` | Default generation mode (`"std"` or `"pro"`), the "std" mode generates 720P output, whereas the "pro" mode provides higher-quality results with 1080P resolution and increased fps.|
 
 ---
 

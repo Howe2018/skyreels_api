@@ -49,9 +49,6 @@ from skyreels import SkyreelsClient
 client = SkyreelsClient()
 task = client.generate_text2video(
     prompt="****",
-    duration=5,           # Video duration in seconds
-    aspect_ratio="16:9",  # Options: 16:9, 4:3, 1:1, 9:16, 3:4
-    mode="pro",           # Use "pro" for 1080P or "std" for standard
     sound=False,
     max_wait_time=900,    # Max seconds to wait for completion
 )
@@ -70,9 +67,6 @@ from skyreels import SkyreelsClient
 client = SkyreelsClient()
 task = client.generate_text2video(
     prompt="****",
-    duration=5,
-    aspect_ratio="16:9",  # Options: 16:9, 4:3, 1:1, 9:16, 3:4
-    mode="pro",
     sound=True,           # Enable AI-generated synchronized audio
     max_wait_time=900,
 )
@@ -91,8 +85,6 @@ client = SkyreelsClient()
 task = client.generate_image2video(
     prompt="****",
     image_url="***", # Must be a public image URL
-    duration=5,
-    mode="pro",
     sound=False,
     max_wait_time=900,
 )
@@ -111,8 +103,6 @@ client = SkyreelsClient()
 task = client.generate_image2video(
     prompt="***",
     image_url="***", # Must be a public image URL
-    duration=5,
-    mode="pro",
     sound=True,        # Enable AI-generated synchronized audio
     max_wait_time=900,
 )
