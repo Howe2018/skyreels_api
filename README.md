@@ -22,20 +22,12 @@ pip install .
 
 ## Quick Start
 
-### 1. Initialization
-The easiest way to get started is by setting your API key as an environment variable:
+### 1. Set Your API Key
+
+The quickest way to get started is by setting your API key as an environment variable:
+
 ```bash
 export SKYREELS_API_KEY="your_api_key_here"
-```
-
-You can also initialize the client directly in your code. The client supports context manager usage for automatic resource cleanup:
-```python
-from skyreels import SkyreelsClient
-
-# Using as a context manager (recommended for automatic connection closing)
-with SkyreelsClient(api_key="your_api_key") as client:
-    # Your code here
-    pass
 ```
 
 ### 2. Simple Video Generation (Automatic Polling)
