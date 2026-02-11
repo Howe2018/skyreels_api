@@ -53,7 +53,7 @@ task = client.generate_text2video(
     aspect_ratio="16:9",  # Options: 16:9, 4:3, 1:1, 9:16, 3:4
     mode="pro",           # Use "pro" for 1080P or "std" for standard
     sound=False,
-    max_wait_time=600,    # Max seconds to wait for completion
+    max_wait_time=900,    # Max seconds to wait for completion
 )
 
 if task.status == "success":
@@ -74,7 +74,7 @@ task = client.generate_text2video(
     aspect_ratio="16:9",  # Options: 16:9, 4:3, 1:1, 9:16, 3:4
     mode="pro",
     sound=True,           # Enable AI-generated synchronized audio
-    max_wait_time=600,
+    max_wait_time=900,
 )
 
 if task.status == "success":
@@ -94,7 +94,7 @@ task = client.generate_image2video(
     duration=5,
     mode="pro",
     sound=False,
-    max_wait_time=600,
+    max_wait_time=900,
 )
 
 if task.status == "success":
@@ -114,7 +114,7 @@ task = client.generate_image2video(
     duration=5,
     mode="pro",
     sound=True,        # Enable AI-generated synchronized audio
-    max_wait_time=600,
+    max_wait_time=900,
 )
 
 if task.status == "success":
