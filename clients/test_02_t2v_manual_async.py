@@ -11,7 +11,7 @@ async def main():
     parser.add_argument("--api-key", type=str, default=os.getenv("SKYREELS_API_KEY"), help="API Key")
     parser.add_argument("--base-url", type=str, default=os.getenv("BASE_URL", "https://infer.skyreels.ai"), help="Base URL")
     parser.add_argument("--prompt", type=str, default="A cute cat", help="Video prompt")
-    parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")
+    parser.add_argument("--duration", type=int, default=8, help="Video duration (1-8)")
     parser.add_argument("--aspect-ratio", type=str, choices=["16:9", "4:3", "1:1", "9:16", "3:4"], default="16:9", help="Aspect ratio")
     parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
     parser.add_argument("--sound", action="store_true", help="Enable sound generation")

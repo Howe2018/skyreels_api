@@ -34,7 +34,7 @@ The `SkyreelsClient` supports both synchronous and asynchronous operations. You 
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `prompt` | `str` | **Required** | Text description for video generation. |
-| `duration` | `int` | `5` | Duration of the generated video in seconds. |
+| `duration` | `int` | `8` | Duration of the generated video in seconds. |
 | `aspect_ratio` | `str` | `"16:9"` | Aspect ratio of the video. Options: `"16:9"`, `"4:3"`, `"1:1"`, `"9:16"`, `"3:4"`. |
 | `sound` | `bool` | `False` | **Important:** Determines whether the output video has audio. |
 | `mode` | `str` | `"std"` | **Important:** Generation mode. `"std"` results in 720P, while `"pro"` provides 1080P high-definition. |

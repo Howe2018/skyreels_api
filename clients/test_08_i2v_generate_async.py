@@ -12,7 +12,7 @@ async def main():
     parser.add_argument("--base-url", type=str, default=os.getenv("BASE_URL", "https://infer.skyreels.ai"), help="Base URL")
     parser.add_argument("--prompt", type=str, default="Forest movement", help="Video prompt")
     parser.add_argument("--image-url", type=str, default="https://picsum.photos/1280/720", help="First frame image URL")
-    parser.add_argument("--duration", type=int, default=5, help="Video duration (1-8)")
+    parser.add_argument("--duration", type=int, default=8, help="Video duration (1-8)")
     parser.add_argument("--interval", type=float, default=5.0, help="Polling interval in seconds")
     parser.add_argument("--mode", type=str, choices=["std", "pro"], default="std", help="Generation mode (std or pro)")
     parser.add_argument("--sound", action="store_true", help="Enable sound generation")
