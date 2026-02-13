@@ -1,7 +1,7 @@
 import os
 import time
 import asyncio
-from typing import Literal, Optional, Union
+from typing import Literal, Optional
 import httpx
 from .models import Text2VideoSubmit, Image2VideoSubmit, SubmitResponse, TaskResponse, TaskStatus
 from .exceptions import raise_for_code
@@ -81,9 +81,12 @@ class SkyreelsClient:
         print(f"task id: {submit_resp.task_id}, max retries: {max_retries}, max wait time: {wait_time}")
 
         for _ in range(max_retries):
-            task_resp = self.get_text2video_task(submit_resp.task_id)
-            if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
-                return task_resp
+            try:
+                task_resp = self.get_text2video_task(submit_resp.task_id)
+                if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
+                    return task_resp
+            except httpx.RequestError:
+                pass
             time.sleep(interval)
         return self.get_text2video_task(submit_resp.task_id)
 
@@ -132,9 +135,12 @@ class SkyreelsClient:
         print(f"task id: {submit_resp.task_id}, max retries: {max_retries}, max wait time: {wait_time}")
 
         for _ in range(max_retries):
-            task_resp = self.get_image2video_task(submit_resp.task_id)
-            if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
-                return task_resp
+            try:
+                task_resp = self.get_image2video_task(submit_resp.task_id)
+                if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
+                    return task_resp
+            except httpx.RequestError:
+                pass
             time.sleep(interval)
         return self.get_image2video_task(submit_resp.task_id)
 
@@ -182,9 +188,12 @@ class SkyreelsClient:
         max_retries = int(wait_time / interval)
 
         for _ in range(max_retries):
-            task_resp = await self.aget_text2video_task(submit_resp.task_id)
-            if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
-                return task_resp
+            try:
+                task_resp = await self.aget_text2video_task(submit_resp.task_id)
+                if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
+                    return task_resp
+            except httpx.RequestError:
+                pass
             await asyncio.sleep(interval)
         return await self.aget_text2video_task(submit_resp.task_id)
 
@@ -232,9 +241,12 @@ class SkyreelsClient:
         max_retries = int(wait_time / interval)
 
         for _ in range(max_retries):
-            task_resp = await self.aget_image2video_task(submit_resp.task_id)
-            if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
-                return task_resp
+            try:
+                task_resp = await self.aget_image2video_task(submit_resp.task_id)
+                if task_resp.status in [TaskStatus.SUCCESS, TaskStatus.FAILED]:
+                    return task_resp
+            except httpx.RequestError:
+                pass
             await asyncio.sleep(interval)
         return await self.aget_image2video_task(submit_resp.task_id)
 
