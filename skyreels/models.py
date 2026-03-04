@@ -34,7 +34,7 @@ class BaseRequest(BaseModel):
 
 class Text2VideoSubmit(BaseRequest):
     prompt: str = Field(..., description="prompt")
-    duration: int = Field(5, ge=1, le=8, description="Duration of the video")
+    duration: int = Field(5, ge=5, le=15, description="Duration of the video")
     aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = Field("16:9", description="Aspect ratio of the video")
     sound: bool = Field(False, description="Whether to create sound")
     mode: Literal["std", "pro"] = Field("std", description="mode")
@@ -42,7 +42,7 @@ class Text2VideoSubmit(BaseRequest):
 class Image2VideoSubmit(BaseRequest):
     prompt: str = Field(..., description="prompt")
     first_frame_image: str = Field(..., description="first frame image url")
-    duration: int = Field(5, ge=1, le=8, description="Duration of the video")
+    duration: int = Field(5, ge=5, le=15, description="Duration of the video")
     sound: bool = Field(False, description="Whether to create sound")
     mode: Literal["std", "pro"] = Field("std", description="mode")
 

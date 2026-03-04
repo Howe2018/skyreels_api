@@ -40,7 +40,7 @@ class SkyreelsClient:
     def submit_text2video(
         self,
         prompt: str,
-        duration: int = 8,
+        duration: int = 10,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro"
@@ -63,7 +63,7 @@ class SkyreelsClient:
     def generate_text2video(
         self,
         prompt: str,
-        duration: int = 8,
+        duration: int = 10,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro",
@@ -95,7 +95,7 @@ class SkyreelsClient:
         self,
         prompt: str,
         image_url: str,
-        duration: int = 8,
+        duration: int = 10,
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro"
     ) -> SubmitResponse:
@@ -118,7 +118,7 @@ class SkyreelsClient:
         self,
         prompt: str,
         image_url: str,
-        duration: int = 8,
+        duration: int = 10,
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro",
         polling_interval: Optional[float] = None,
@@ -148,7 +148,7 @@ class SkyreelsClient:
     async def asubmit_text2video(
         self,
         prompt: str,
-        duration: int = 8,
+        duration: int = 10,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro"
@@ -171,7 +171,7 @@ class SkyreelsClient:
     async def agenerate_text2video(
         self,
         prompt: str,
-        duration: int = 8,
+        duration: int = 10,
         aspect_ratio: Literal["16:9", "4:3", "1:1", "9:16", "3:4"] = "16:9",
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro",
@@ -202,7 +202,7 @@ class SkyreelsClient:
         self,
         prompt: str,
         image_url: str,
-        duration: int = 8,
+        duration: int = 10,
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro"
     ) -> SubmitResponse:
@@ -225,7 +225,7 @@ class SkyreelsClient:
         self,
         prompt: str,
         image_url: str,
-        duration: int = 8,
+        duration: int = 10,
         sound: bool = False,
         mode: Literal["std", "pro"] = "pro",
         polling_interval: Optional[float] = None,
